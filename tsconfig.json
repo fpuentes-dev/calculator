@@ -18,8 +18,8 @@
     "sourceMap": true,
     "inlineSources": true,
     "paths": {
-      "@calculator/*": ["src/*"],
-      "@calculator-test/*": ["test/*"]
+      "@src/*": ["src/*"],
+      "@test/*": ["test/*"]
     },
     "plugins": [
       {

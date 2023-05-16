@@ -1,3 +1,5 @@
-export default function Home() {
-  return <p>Hola mundo!</p>;
+import Home from '@src/views/Home'
+
+export default function Page() {
+  return <Home />
 }
