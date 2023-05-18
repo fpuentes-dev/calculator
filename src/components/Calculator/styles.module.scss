@@ -1,0 +1,20 @@
+.container {
+  background-color: red;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  width: 300px;
+  height: 400px;
+}
+
+.display {
+  background-color: rgba(0 0 0 / 30%);
+  border: 1px solid black;
+  padding: 0 10px;
+  text-align: end;
+  height: 30px;
+
+  &:focus {
+    outline: none;
+  }
+}
