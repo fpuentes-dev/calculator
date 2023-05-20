@@ -70,7 +70,7 @@ const useMainButtons = () => {
     isDecimal && setIsDecimal(false)
   }
 
-  const handleSum = () => {
+  const handleBasicOperation = (operation: OPERATION) => {
     let result = context.result || Number(context.num)
     if (context.operation) {
       result = compute(context.result, Number(context.num), context.operation)
@@ -79,52 +79,16 @@ const useMainButtons = () => {
     setContext({
       ...context,
       num: '',
-      operation: OPERATION.SUM,
+      operation: operation,
       result,
     })
+    isDecimal && setIsDecimal(false)
   }
 
-  const handleSubtract = () => {
-    let result = context.result || Number(context.num)
-    if (context.operation) {
-      result = compute(context.result, Number(context.num), context.operation)
-    }
-
-    setContext({
-      ...context,
-      num: '',
-      operation: OPERATION.SUB,
-      result,
-    })
-  }
-
-  const handleMultiply = () => {
-    let result = context.result || Number(context.num)
-    if (context.operation) {
-      result = compute(context.result, Number(context.num), context.operation)
-    }
-
-    setContext({
-      ...context,
-      num: '',
-      operation: OPERATION.MUL,
-      result,
-    })
-  }
-
-  const handleDivide = () => {
-    let result = context.result || Number(context.num)
-    if (context.operation) {
-      result = compute(context.result, Number(context.num), context.operation)
-    }
-
-    setContext({
-      ...context,
-      num: '',
-      operation: OPERATION.DIV,
-      result,
-    })
-  }
+  const handleSum = () => handleBasicOperation(OPERATION.SUM)
+  const handleSubtract = () => handleBasicOperation(OPERATION.SUB)
+  const handleMultiply = () => handleBasicOperation(OPERATION.MUL)
+  const handleDivide = () => handleBasicOperation(OPERATION.DIV)
 
   const handleEq = () => {
     if (context.num && context.operation) {
@@ -134,6 +98,35 @@ const useMainButtons = () => {
         num: '',
         operation: undefined,
         result,
+      })
+      isDecimal && setIsDecimal(false)
+    }
+  }
+
+  const handleExp2 = () => {
+    if (context.num) {
+      setContext({
+        ...context,
+        num: `${Math.pow(Number(context.num), 2)}`,
+      })
+    } else {
+      setContext({
+        ...context,
+        result: Math.pow(context.result, 2),
+      })
+    }
+  }
+
+  const handleSqrt = () => {
+    if (context.num) {
+      setContext({
+        ...context,
+        num: `${Math.sqrt(Number(context.num))}`,
+      })
+    } else {
+      setContext({
+        ...context,
+        result: Math.sqrt(context.result),
       })
     }
   }
@@ -158,6 +151,8 @@ const useMainButtons = () => {
     handleMultiply,
     handleDivide,
     handleEq,
+    handleExp2,
+    handleSqrt,
   }
 }
 

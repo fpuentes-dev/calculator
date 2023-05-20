@@ -24,15 +24,17 @@ const MainButtons: React.FC = () => {
     handleMultiply,
     handleDivide,
     handleEq,
+    handleExp2,
+    handleSqrt,
   } = useMainButtons()
 
   return (
     <div className={container}>
       <Button onClick={handleAC}>AC</Button>
-      <Button>
+      <Button onClick={handleSqrt}>
         <sup>2</sup>&#8730;
       </Button>
-      <Button>
+      <Button onClick={handleExp2}>
         x<sup>2</sup>
       </Button>
       <Button onClick={handleDivide}>/</Button>
